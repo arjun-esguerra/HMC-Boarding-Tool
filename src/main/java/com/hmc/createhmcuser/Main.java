@@ -18,10 +18,8 @@ public class Main extends Application {
         controller.start();
 
         Scene scene = new Scene(root);
-        stage.setTitle("Create User");
         stage.setScene(scene);
         stage.show();
-
     }
 
     public static void main(String[] args) {
