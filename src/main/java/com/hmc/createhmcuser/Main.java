@@ -15,7 +15,7 @@ public class Main extends Application {
         Parent root = fxmlLoader.load();
 
         Controller controller = fxmlLoader.getController();
-        controller.start();
+        controller.initialize();
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
