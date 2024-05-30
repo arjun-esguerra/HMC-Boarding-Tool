@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("input_view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 640, 400);
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Create User");
         stage.setScene(scene);
         stage.show();
