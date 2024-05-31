@@ -15,7 +15,6 @@ import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 public class Controller {
 
@@ -46,7 +45,6 @@ public class Controller {
     }
 
     public void loadPhoneNumbers() throws IOException {
-
         String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/phone_numbers.json")));
         JSONObject jsonObject = new JSONObject(jsonContent);
         JSONArray jsonArray = jsonObject.getJSONArray("TelephoneNumbers");
