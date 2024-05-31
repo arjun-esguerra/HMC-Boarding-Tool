@@ -22,7 +22,7 @@ public class Controller {
     private ComboBox<String> officeComboBox;
 
     @FXML
-    private ComboBox<Integer> numberComboBox;
+    private ComboBox<String> numberComboBox;
 
     private Map<String, List<String>> officePhoneNumbers;
 
@@ -57,8 +57,6 @@ public class Controller {
         String phoneNumber = phoneNumberObject.getString("TelephoneNumber");
         String office = getOffice(phoneNumber);
 
-        System.out.println("Phone Number: " + phoneNumber + ", Office: " + office);
-
         // hash phone numbers by office
         officePhoneNumbers.putIfAbsent(office, new ArrayList<>());
         officePhoneNumbers.get(office).add(phoneNumber);
@@ -70,13 +68,30 @@ public class Controller {
             System.out.println("Phone Number: " + entry.getValue());
         }
 
+        // add event listener to office combo box
+        officeComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+
+            // if the map contains the selected office, create a list of phone numbers
+            if (officePhoneNumbers.containsKey(newValue)) {
+                List<String> phoneNumbers = officePhoneNumbers.get(newValue);
+
+                // convert list to observable list
+                ObservableList<String> observablePhoneNumbers = FXCollections.observableArrayList();
+                for (String phoneNumber : phoneNumbers) {
+                    observablePhoneNumbers.add(phoneNumber);
+                }
+
+                numberComboBox.setItems(observablePhoneNumbers);
+            }
+        });
+
     }
 
     public String getOffice(String phoneNumber) {
         String prefix = phoneNumber.substring(0, 4);
         if (prefix.equals("1916") || prefix.equals("1530")) { return "Sacramento";
         } else if (prefix.equals("1213") || prefix.equals("1562")) { return "Los Angeles";
-        } else if (prefix.equals("1619") || prefix.equals("562")) { return "San Diego";
+        } else if (prefix.equals("1619")) { return "San Diego";
         } else if (prefix.equals("1909")) { return "Ontario";
         } else if (prefix.equals("1408")) { return "San Jose";
         } else if (prefix.equals("1628")) { return "San Francisco";
