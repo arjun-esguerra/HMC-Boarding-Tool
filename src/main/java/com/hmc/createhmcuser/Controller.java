@@ -59,27 +59,32 @@ public class Controller {
         String phoneNumber = phoneNumberObject.getString("TelephoneNumber");
         String office = getOffice(phoneNumber);
 
+        System.out.println("Phone Number: " + phoneNumber + ", Office: " + office);
+
         // hash phone numbers by office
         officePhoneNumbers.putIfAbsent(office, new ArrayList<>());
         officePhoneNumbers.get(office).add(phoneNumber);
 
         }
 
-        System.out.println(officePhoneNumbers);
+        for (Map.Entry<String, List<String>> entry : officePhoneNumbers.entrySet()) {
+            System.out.println("Office: " + entry.getKey());
+            System.out.println("Phone Number: " + entry.getValue());
+        }
+
     }
 
     public String getOffice(String phoneNumber) {
         String prefix = phoneNumber.substring(0, 4);
-        if (prefix.equals("1916")) {
-            return "Sacramento";
+        if (prefix.equals("1916") || prefix.equals("1530")) { return "Sacramento";
+        } else if (prefix.equals("1213") || prefix.equals("1562")) { return "Los Angeles";
+        } else if (prefix.equals("1619") || prefix.equals("562")) { return "San Diego";
+        } else if (prefix.equals("1909")) { return "Ontario";
+        } else if (prefix.equals("1408")) { return "San Jose";
+        } else if (prefix.equals("1628")) { return "San Francisco";
         } else {
             return "Unknown";
         }
     }
-
-
-
-
-
 }
 
