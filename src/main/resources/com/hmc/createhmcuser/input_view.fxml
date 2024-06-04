@@ -30,7 +30,7 @@
             <ComboBox fx:id="officeComboBox" layoutX="99.0" layoutY="298.0" prefWidth="150.0" />
             <Text layoutX="32.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number:" />
             <ComboBox fx:id="numberComboBox" layoutX="99.0" layoutY="338.0" maxHeight="1.7976931348623157E308" prefWidth="150.0" />
-            <Button layoutX="99.0" layoutY="378.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Create User" />
+            <Button fx:id="submitButton" layoutX="99.0" layoutY="378.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Create User" />
       </children>
     </AnchorPane>
   </children>

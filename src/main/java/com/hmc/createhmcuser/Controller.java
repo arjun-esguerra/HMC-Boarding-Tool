@@ -3,6 +3,7 @@ package com.hmc.createhmcuser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
 import java.io.IOException;
@@ -13,19 +14,32 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javafx.scene.control.TextField;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Controller {
 
+    @FXML private TextField firstNameField;
+    @FXML private TextField lastNameField;
+    @FXML private TextField passwordField;
+    @FXML private TextField titleField;
     @FXML private ComboBox<String> officeComboBox;
     @FXML private ComboBox<String> numberComboBox;
+    @FXML private Button submitButton;
 
     private Map<String, List<String>> officePhoneNumbers;
+    private CSV_Writer csv_writer;
 
+    @FXML
     public void initialize() throws IOException {
         setOfficeComboBox();
         loadPhoneNumbers();
+
+        // event listener for submit button
+        csv_writer = new CSV_Writer();
+        submitButton.setOnAction(event -> csv_writer.submit(firstNameField.getText(), lastNameField.getText(),
+                passwordField.getText(), titleField.getText()));
 
     }
 
@@ -96,5 +110,6 @@ public class Controller {
             return "Unknown";
         }
     }
+
 }
 
