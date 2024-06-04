@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -38,8 +39,14 @@ public class Controller {
 
         // event listener for submit button
         csv_writer = new CSV_Writer();
-        submitButton.setOnAction(event -> csv_writer.submit(firstNameField.getText(), lastNameField.getText(),
-                passwordField.getText(), titleField.getText()));
+        submitButton.setOnAction(event -> {
+            try {
+                csv_writer.submit(firstNameField.getText(), lastNameField.getText(),
+                        passwordField.getText(), titleField.getText(), officeComboBox.getValue(), numberComboBox.getValue());
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
     }
 
