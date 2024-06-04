@@ -63,11 +63,6 @@ public class Controller {
 
         }
 
-        for (Map.Entry<String, List<String>> entry : officePhoneNumbers.entrySet()) {
-            System.out.println("Office: " + entry.getKey());
-            System.out.println("Phone Number: " + entry.getValue());
-        }
-
         // add event listener to office combo box
         officeComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
 
@@ -82,6 +77,12 @@ public class Controller {
                 }
 
                 numberComboBox.setItems(observablePhoneNumbers);
+
+                // sets combobox height
+                numberComboBox.show();
+                numberComboBox.hide();
+
+
             }
         });
 
