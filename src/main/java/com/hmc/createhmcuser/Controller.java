@@ -82,7 +82,6 @@ public class Controller {
                 numberComboBox.show();
                 numberComboBox.hide();
 
-
             }
         });
 

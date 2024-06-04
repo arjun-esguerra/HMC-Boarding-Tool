@@ -19,13 +19,13 @@
                </image>
             </ImageView>
             <Text layoutX="32.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
-            <TextField layoutX="99.0" layoutY="138.0" />
+            <TextField fx:id="firstNameField" layoutX="99.0" layoutY="138.0" />
             <Text layoutX="32.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
-            <TextField layoutX="99.0" layoutY="178.0" />
+            <TextField fx:id="lastNameField" layoutX="99.0" layoutY="178.0" />
             <Text layoutX="32.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
-            <TextField layoutX="99.0" layoutY="218.0" />
+            <TextField fx:id="passwordField" layoutX="99.0" layoutY="218.0" />
             <Text layoutX="32.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" />
-            <TextField layoutX="99.0" layoutY="258.0" prefWidth="150.0" />
+            <TextField fx:id="titleField" layoutX="99.0" layoutY="258.0" prefWidth="150.0" />
             <Text layoutX="32.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Office:" />
             <ComboBox fx:id="officeComboBox" layoutX="99.0" layoutY="298.0" prefWidth="150.0" />
             <Text layoutX="32.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number:" />
