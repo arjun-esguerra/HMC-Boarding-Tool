@@ -18,11 +18,8 @@ import org.json.JSONObject;
 
 public class Controller {
 
-    @FXML
-    private ComboBox<String> officeComboBox;
-
-    @FXML
-    private ComboBox<String> numberComboBox;
+    @FXML private ComboBox<String> officeComboBox;
+    @FXML private ComboBox<String> numberComboBox;
 
     private Map<String, List<String>> officePhoneNumbers;
 
