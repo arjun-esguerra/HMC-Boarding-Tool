@@ -25,33 +25,25 @@ public class CSV_Writer {
         this.number = number;
 
         try {
+            // build string for content in csv file
+            StringBuilder sb = new StringBuilder()
+            .append(firstName).append(',')
+            .append(lastName).append(',')
+            .append(firstName + ' ' + lastName).append(',')
+            .append(firstName.charAt(0) + lastName).append(',')
+            .append(password).append(',')
+            .append(title).append(',')
+            .append(firstName + '.' + lastName + "@hmcarchitects.com").append(',')
+            .append(firstName + '.' + lastName + "@hmcarchitects.com").append(',')
+            .append(number);
+
+            // create list of content in the csv file
             List<String> lines = Files.readAllLines(Paths.get("output.csv"));
-
-            StringBuilder sb = new StringBuilder();
-            sb.append(firstName);
-            sb.append(',');
-            sb.append(lastName);
-            sb.append(',');
-            sb.append(firstName + ' ' + lastName);
-            sb.append(',');
-            sb.append(firstName.charAt(0) + lastName);
-            sb.append(',');
-            sb.append(password);
-            sb.append(',');
-            sb.append(title);
-            sb.append(',');
-            sb.append(firstName + '.' + lastName + "@hmcarchitects.com");
-            sb.append(',');
-            sb.append(firstName + '.' + lastName + "@hmcarchitects.com");
-            sb.append(',');
-            sb.append(number);
-
             if (lines.size() > 1) {
                 lines.set(1, sb.toString());
             } else {
                 lines.add(sb.toString());
             }
-
             Files.write(Paths.get("output.csv"), lines);
 
             System.out.println(sb);
@@ -60,7 +52,6 @@ public class CSV_Writer {
             System.out.println("An error occurred while writing to the CSV file");
             e.printStackTrace();
         }
-
 
     }
 
