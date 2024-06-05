@@ -43,11 +43,10 @@ public class Controller {
             try {
                 csv_writer.submit(firstNameField.getText(), lastNameField.getText(),
                         passwordField.getText(), titleField.getText(), officeComboBox.getValue(), numberComboBox.getValue());
-            } catch (FileNotFoundException e) {
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
-
     }
 
     public void setOfficeComboBox() {

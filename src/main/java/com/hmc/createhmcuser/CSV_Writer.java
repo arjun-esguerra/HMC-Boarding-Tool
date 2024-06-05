@@ -1,7 +1,6 @@
 package com.hmc.createhmcuser;
 
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import javafx.scene.control.Alert;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,7 +15,7 @@ public class CSV_Writer {
     private String office;
     private String number;
 
-    public void submit(String firstName, String lastName, String password, String title, String office, String number) throws FileNotFoundException {
+    public void submit(String firstName, String lastName, String password, String title, String office, String number) throws IOException {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -24,33 +23,38 @@ public class CSV_Writer {
         this.office = office;
         this.number = number;
 
-        try {
+        if (firstName.isEmpty() || lastName.isEmpty() || password.isEmpty() || title.isEmpty() || office == null|| number == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("All fields must be filled out!");
+            alert.showAndWait();
+        } else {
             // build string for content in csv file
             StringBuilder sb = new StringBuilder()
-            .append(firstName).append(',')
-            .append(lastName).append(',')
-            .append(firstName + ' ' + lastName).append(',')
-            .append(firstName.charAt(0) + lastName).append(',')
-            .append(password).append(',')
-            .append(title).append(',')
-            .append(firstName + '.' + lastName + "@hmcarchitects.com").append(',')
-            .append(firstName + '.' + lastName + "@hmcarchitects.com").append(',')
-            .append(number);
+                    .append(firstName).append(',')
+                    .append(lastName).append(',')
+                    .append(firstName + ' ' + lastName).append(',')
+                    .append(firstName.charAt(0) + lastName).append(',')
+                    .append(password).append(',')
+                    .append(title).append(',')
+                    .append(firstName + '.' + lastName + "@hmcarchitects.com").append(',')
+                    .append(firstName + '.' + lastName + "@hmcarchitects.com").append(',')
+                    .append(office).append(',')
+                    .append(number);
 
             // create list of content in the csv file
             List<String> lines = Files.readAllLines(Paths.get("output.csv"));
-            if (lines.size() > 1) {
-                lines.set(1, sb.toString());
-            } else {
-                lines.add(sb.toString());
-            }
+            if (lines.size() > 1) { lines.set(1, sb.toString());
+            } else { lines.add(sb.toString()); }
+
             Files.write(Paths.get("output.csv"), lines);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("User Created Successfully!");
+            alert.showAndWait();
 
-            System.out.println(sb);
-
-        } catch (IOException e) {
-            System.out.println("An error occurred while writing to the CSV file");
-            e.printStackTrace();
         }
 
     }
