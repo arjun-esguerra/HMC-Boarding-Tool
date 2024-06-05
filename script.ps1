@@ -1,23 +1,28 @@
 $P = Import-Csv -Path .\output.csv
 
-$P | Format-Table
+$row = $P[0]
 
-<## Creates a user with the inputted data
-$GivenName = 'Santa'
-$Surname = 'Claus'
-$Name = $GivenName + ' ' + $Surname
-$SamAccountName = $GivenName.Substring(0,1) + $Surname
-$Password = ConvertTo-SecureString "abcd123!" -AsPlainText -Force
+$FirstName = $row.'First Name'
+$LastName = $row.'Last Name'
+$FullName = $row.'First Name' + ' ' + $row.'Last Name'
+$Username = $row.'Username'
+$Password = ConvertTo-SecureString $row.'Password' -AsPlainText -Force
+$Title = $row.'Job Title'
+$Email = $row.'Email'
+$Office = $row.'Office'
+$Phone = $row.'Phone Number'
 
-New-ADUser -GivenName $GivenName -Surname $Surname -Name $Name -SamAccountName $SamAccountName -AccountPassword $Password -OtherAttributes @{
-    'title' = 'Test Title'
-    'DisplayName' = 'Santa Claus'
-    'userPrincipalName' = 'Santa.Claus@hmcarchitects.com'
-    'mail' = 'Santa.Claus@hmcarchitects.com'
-    'telephoneNumber' = '123.123.1234'
+
+# Creates a user with the inputted data
+New-ADUser -GivenName $FirstName -Surname $LastName -Name $FullName -SamAccountName $Username -AccountPassword $Password -OtherAttributes @{
+    'title' = $Title
+    'DisplayName' = $FullName
+    'userPrincipalName' = $Email
+    'mail' = $Email
+    'telephoneNumber' = $Phone
 }
 
-
+<#
 # Associates group policies to the specific user
 $groupNames = @("HMCStaff", "HMCStaff-gs", "SAC Office", "Sacramento Architects gs", "Sacramento Office", "Sacramento Staff gs", "RDrive-Staff")
 
