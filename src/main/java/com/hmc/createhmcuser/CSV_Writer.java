@@ -1,8 +1,11 @@
 package com.hmc.createhmcuser;
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class CSV_Writer {
 
@@ -21,7 +24,8 @@ public class CSV_Writer {
         this.office = office;
         this.number = number;
 
-        try (PrintWriter writer = new PrintWriter("output.csv")) {
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("output.csv"));
 
             StringBuilder sb = new StringBuilder();
             sb.append(firstName);
@@ -42,13 +46,21 @@ public class CSV_Writer {
             sb.append(',');
             sb.append(number);
 
-            writer.write(sb.toString());
+            if (lines.size() > 1) {
+                lines.set(1, sb.toString());
+            } else {
+                lines.add(sb.toString());
+            }
+
+            Files.write(Paths.get("output.csv"), lines);
+
             System.out.println(sb);
 
         } catch (IOException e) {
             System.out.println("An error occurred while writing to the CSV file");
             e.printStackTrace();
         }
+
 
     }
 
