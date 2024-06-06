@@ -22,11 +22,10 @@ New-ADUser -GivenName $FirstName -Surname $LastName -Name $FullName -SamAccountN
     'telephoneNumber' = $Phone
 }
 
-<#
+
 # Associates group policies to the specific user
 $groupNames = @("HMCStaff", "HMCStaff-gs", "SAC Office", "Sacramento Architects gs", "Sacramento Office", "Sacramento Staff gs", "RDrive-Staff")
 
 foreach ($groupName in $groupNames) {
-    Add-ADGroupMember -Identity $groupName -Members $SamAccountName
+    Add-ADGroupMember -Identity $groupName -Members $Username
 }
-#>
