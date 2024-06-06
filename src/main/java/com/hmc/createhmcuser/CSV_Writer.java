@@ -1,6 +1,8 @@
 package com.hmc.createhmcuser;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -54,11 +56,13 @@ public class CSV_Writer {
                 if (lines.size() > 1) { lines.set(1, sb.toString());
                 } else { lines.add(sb.toString()); }
 
+                // confirmation alert
                 Files.write(Paths.get("output.csv"), lines);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText(null);
                 alert.setContentText("User Created Successfully!");
+                alert.getButtonTypes().remove(ButtonType.CANCEL);
                 alert.showAndWait();
 
             }

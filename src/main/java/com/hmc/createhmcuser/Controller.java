@@ -51,7 +51,8 @@ public class Controller {
 
     public void setOfficeComboBox() {
         ObservableList<String> offices = FXCollections.observableArrayList(
-                "Ontario",
+                "Ontario 01",
+                "Ontario 05",
                 "Los Angeles",
                 "Sacramento",
                 "San Jose",
@@ -83,9 +84,12 @@ public class Controller {
         // add event listener to office combo box
         officeComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
 
+            // If the selected office is ONT01 or ONT05, set "Ontario" to key. Else, use the selected office as the key
+            String key = (newValue.equals("Ontario 01") || newValue.equals("Ontario 05")) ? "Ontario" : newValue;
+
             // if the map contains the selected office, create a list of phone numbers
-            if (officePhoneNumbers.containsKey(newValue)) {
-                List<String> phoneNumbers = officePhoneNumbers.get(newValue);
+            if (officePhoneNumbers.containsKey(key)) {
+                List<String> phoneNumbers = officePhoneNumbers.get(key);
 
                 // convert list to observable list
                 ObservableList<String> observablePhoneNumbers = FXCollections.observableArrayList();
