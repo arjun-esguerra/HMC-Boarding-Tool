@@ -1,4 +1,3 @@
-$host.UI.RawUI.WindowSize = New-Object -TypeName System.Management.Automation.Host.Size -ArgumentList 100, 50
 Connect-MicrosoftTeams
 
 $skip = 0

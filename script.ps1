@@ -1,7 +1,9 @@
+Connect-MgGraph
+
 $P = Import-Csv -Path .\output.csv
 
 $row = $P[0]
-
+<#
 $FirstName = $row.'First Name'
 $LastName = $row.'Last Name'
 $FullName = $row.'First Name' + ' ' + $row.'Last Name'
@@ -40,4 +42,15 @@ $GroupPolicies = @{
 foreach ($groupPolicy in $GroupPolicies[$Office]) {
     Add-ADGroupMember -Identity $groupPolicy -Members $Username
 }
+
+#>
+# Assign licenses
+$e5Sku = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'SPE_E3'
+Set-MgUserLicense -UserId $Email -AddLicenses @{SkuId = $e5Sku.SkuId} -RemoveLicenses @()
+
+# Assign teams number
+#Set-CsPhoneNumberAssignment -Identity $Email -PhoneNumber $Phone -PhoneNumberType CallingPlan
+
+    
+    
 
