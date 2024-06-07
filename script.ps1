@@ -3,7 +3,7 @@ Connect-MgGraph
 $P = Import-Csv -Path .\output.csv
 
 $row = $P[0]
-<#
+
 $FirstName = $row.'First Name'
 $LastName = $row.'Last Name'
 $FullName = $row.'First Name' + ' ' + $row.'Last Name'
@@ -14,7 +14,7 @@ $Email = $row.'Email'
 $Office = $row.'Office'
 $Phone = $row.'Phone Number'
 
-
+<#
 # Creates a user with the inputted data
 if ($office -eq 'Ontario 01' -or $office -eq 'Ontario 05') { $Path = "OU=Users,OU=Ontario,OU=HMC,DC=hmcarch,DC=com" } 
 else { $Path = "OU=Users,OU=$Office,OU=HMC,DC=hmcarch,DC=com" }
@@ -45,8 +45,8 @@ foreach ($groupPolicy in $GroupPolicies[$Office]) {
 
 #>
 # Assign licenses
-$e5Sku = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'SPE_E3'
-Set-MgUserLicense -UserId $Email -AddLicenses @{SkuId = $e5Sku.SkuId} -RemoveLicenses @()
+
+
 
 # Assign teams number
 #Set-CsPhoneNumberAssignment -Identity $Email -PhoneNumber $Phone -PhoneNumberType CallingPlan
