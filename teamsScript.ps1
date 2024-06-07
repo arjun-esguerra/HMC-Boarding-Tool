@@ -1,10 +1,5 @@
+$host.UI.RawUI.WindowSize = New-Object -TypeName System.Management.Automation.Host.Size -ArgumentList 100, 50
 Connect-MicrosoftTeams
-<#
-$unassignedNumbers = Get-CsPhoneNumberAssignment | Where-Object  { $_.LineURI -like $null }
-$json = $unassignedNumbers | Select-Object TelephoneNumber | ConvertTo-Json
-
-Set-Content -Path .\src\main\resources\phone_numbers.json -Value $json
-#>
 
 $skip = 0
 $allNumbers = @()
@@ -19,4 +14,10 @@ do {
 
 } while ($res)
 
-$allNumbers.TelephoneNumber
+# for every number, create a telephone number property and remove the +
+$telephoneNumbers = $allNumbers.TelephoneNumber | ForEach-Object { @{ TelephoneNumber = $_.Replace('+', '') } }
+
+$jsonObject = @{ TelephoneNumbers = $telephoneNumbers }
+$json = $jsonObject | ConvertTo-Json
+
+Set-Content -Path .\src\main\resources\phone_numbers.json -Value $json

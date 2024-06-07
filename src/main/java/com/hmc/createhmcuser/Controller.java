@@ -113,7 +113,7 @@ public class Controller {
         if (prefix.equals("1916") || prefix.equals("1530")) { return "Sacramento";
         } else if (prefix.equals("1213") || prefix.equals("1562")) { return "Los Angeles";
         } else if (prefix.equals("1619")) { return "San Diego";
-        } else if (prefix.equals("1909")) { return "Ontario";
+        } else if (prefix.equals("1909") || prefix.equals("1951")) { return "Ontario";
         } else if (prefix.equals("1408")) { return "San Jose";
         } else if (prefix.equals("1628")) { return "San Francisco";
         } else {
