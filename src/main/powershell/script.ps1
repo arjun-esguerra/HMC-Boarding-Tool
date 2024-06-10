@@ -1,5 +1,3 @@
-Connect-MgGraph
-
 $P = Import-Csv -Path .\output.csv
 
 $row = $P[0]
@@ -43,14 +41,41 @@ foreach ($groupPolicy in $GroupPolicies[$Office]) {
     Add-ADGroupMember -Identity $groupPolicy -Members $Username
 }
 
-#>
-# Assign licenses
 
+
+#>
+
+# Assign licenses
+Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
+
+$params = @{
+    AccountEnabled = $true
+    UsageLocation = 'US'
+}
+Update-MgUser -UserId $Email -BodyParameter $params
+<#
+$OfficeE3 = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'SPE_E3'
+$PowerBIPro = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'POWER_BI_PRO'
+$DomesticPlan = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'MCOPSTN1'
+$StandardPlan = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'MCOEV'
+
+$addLicenses = @(
+    @{SkuId = $OfficeE3.SkuId},
+    @{SkuId = $PowerBIPro.SkuId},
+    @{SkuId = $DomesticPlan.SkuId},
+    @{SkuId = $StandardPlan.SkuId}
+)
+
+Set-MgUserLicense -UserId $Email -AddLicenses $addLicenses -RemoveLicenses @()
+
+# Add a 15-second delay
+Start-Sleep -Seconds 15
 
 
 # Assign teams number
-#Set-CsPhoneNumberAssignment -Identity $Email -PhoneNumber $Phone -PhoneNumberType CallingPlan
+Connect-MicrosoftTeams
+Set-CsPhoneNumberAssignment -Identity $Email -PhoneNumber $Phone -PhoneNumberType CallingPlan
 
     
-    
 
+#>

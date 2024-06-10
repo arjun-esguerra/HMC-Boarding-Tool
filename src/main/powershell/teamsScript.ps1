@@ -3,7 +3,7 @@ Connect-MicrosoftTeams
 $skip = 0
 $allNumbers = @()
 
-# Loop until Get-CsPhoneNumberAssignment returns no more resutls
+# Loop until Get-CsPhoneNumberAssignment returns no more results
 do {
     $res = Get-CsPhoneNumberAssignment -CapabilitiesContain 'UserAssignment' -NumberType 'CallingPlan' -PstnAssignmentStatus 'Unassigned' -Skip $skip
     
@@ -19,4 +19,4 @@ $telephoneNumbers = $allNumbers.TelephoneNumber | ForEach-Object { @{ TelephoneN
 $jsonObject = @{ TelephoneNumbers = $telephoneNumbers }
 $json = $jsonObject | ConvertTo-Json
 
-Set-Content -Path .\src\main\resources\phone_numbers.json -Value $json
+Set-Content -Path ..\resources\phone_numbers.json -Value $json
