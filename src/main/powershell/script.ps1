@@ -1,3 +1,6 @@
+Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
+Connect-MicrosoftTeams
+<#
 $P = Import-Csv -Path .\output.csv
 
 $row = $P[0]
@@ -12,7 +15,7 @@ $Email = $row.'Email'
 $Office = $row.'Office'
 $Phone = $row.'Phone Number'
 
-<#
+
 # Creates a user with the inputted data
 if ($office -eq 'Ontario 01' -or $office -eq 'Ontario 05') { $Path = "OU=Users,OU=Ontario,OU=HMC,DC=hmcarch,DC=com" } 
 else { $Path = "OU=Users,OU=$Office,OU=HMC,DC=hmcarch,DC=com" }
@@ -40,20 +43,16 @@ $GroupPolicies = @{
 foreach ($groupPolicy in $GroupPolicies[$Office]) {
     Add-ADGroupMember -Identity $groupPolicy -Members $Username
 }
-
-
-
 #>
 
 # Assign licenses
-Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
 
 $params = @{
     AccountEnabled = $true
     UsageLocation = 'US'
 }
 Update-MgUser -UserId $Email -BodyParameter $params
-<#
+
 $OfficeE3 = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'SPE_E3'
 $PowerBIPro = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'POWER_BI_PRO'
 $DomesticPlan = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'MCOPSTN1'
@@ -68,14 +67,8 @@ $addLicenses = @(
 
 Set-MgUserLicense -UserId $Email -AddLicenses $addLicenses -RemoveLicenses @()
 
-# Add a 15-second delay
-Start-Sleep -Seconds 15
-
-
 # Assign teams number
-Connect-MicrosoftTeams
 Set-CsPhoneNumberAssignment -Identity $Email -PhoneNumber $Phone -PhoneNumberType CallingPlan
 
     
 
-#>

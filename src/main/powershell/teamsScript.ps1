@@ -19,4 +19,4 @@ $telephoneNumbers = $allNumbers.TelephoneNumber | ForEach-Object { @{ TelephoneN
 $jsonObject = @{ TelephoneNumbers = $telephoneNumbers }
 $json = $jsonObject | ConvertTo-Json
 
-Set-Content -Path ..\resources\phone_numbers.json -Value $json
+Set-Content -Path .\src\main\resources\phone_numbers.json -Value $json
