@@ -1,8 +1,13 @@
 package com.hmc.createhmcuser;
 
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ProgressIndicator;
+import javafx.stage.StageStyle;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -20,7 +25,7 @@ public class CSV_Writer {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-        this.title = lastName;
+        this.title = title;
         this.office = office;
         this.number = number;
 
@@ -38,7 +43,15 @@ public class CSV_Writer {
             alert.setContentText("Password must be at least 8 characters with at least 1 number and 1 symbol.");
             alert.showAndWait();
         } else {
+            // Show a loading alert
+           /* Alert loadingAlert = new Alert(Alert.AlertType.INFORMATION);
+            loadingAlert.initStyle(StageStyle.UNDECORATED);
+            loadingAlert.setHeaderText("Loading...");
+            loadingAlert.getDialogPane().setContent(new ProgressIndicator());
+            loadingAlert.show();
+*/
             writeCSV();
+            Thread.sleep(10000);
             callScript();
         }
     }
@@ -60,6 +73,9 @@ public class CSV_Writer {
         List<String> lines = Files.readAllLines(Paths.get("output.csv"));
         if (lines.size() > 1) { lines.set(1, sb.toString());
         } else { lines.add(sb.toString()); }
+
+        Files.write(Paths.get("output.csv"), lines);
+
     }
 
     public void callScript() throws IOException, InterruptedException {
@@ -67,8 +83,17 @@ public class CSV_Writer {
 
         ProcessBuilder pb = new ProcessBuilder(command);
         Process process = pb.start();
+
+        // View Powershell terminal
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+        }
+
         process.waitFor();
     }
+
 
 }
 

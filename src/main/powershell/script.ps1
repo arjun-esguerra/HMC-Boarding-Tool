@@ -99,5 +99,6 @@ while (-not $success) {
         Start-Sleep -Seconds 15
         Write-Output "Assigning Number..."
     }
-}
 
+    Write-Output "Licensing and number assignment complete"
+}
