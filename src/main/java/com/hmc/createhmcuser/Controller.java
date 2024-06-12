@@ -42,7 +42,7 @@ public class Controller {
             try {
                 csv_writer.submit(firstNameField.getText(), lastNameField.getText(),
                         passwordField.getText(), titleField.getText(), officeComboBox.getValue(), numberComboBox.getValue());
-            } catch (IOException e) {
+            } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
         });

@@ -1,6 +1,6 @@
 Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
 Connect-MicrosoftTeams
-<#
+
 $P = Import-Csv -Path .\output.csv
 
 $row = $P[0]
@@ -43,32 +43,61 @@ $GroupPolicies = @{
 foreach ($groupPolicy in $GroupPolicies[$Office]) {
     Add-ADGroupMember -Identity $groupPolicy -Members $Username
 }
-#>
 
 # Assign licenses
+$success = $false
 
-$params = @{
-    AccountEnabled = $true
-    UsageLocation = 'US'
+while (-not $success) {
+    try {
+        $params = @{
+            AccountEnabled = $true
+            UsageLocation  = 'US'
+        }
+        Update-MgUser -UserId $Email -BodyParameter $params -ErrorAction Stop
+
+        $OfficeE3 = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'SPE_E3'
+        $PowerBIPro = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'POWER_BI_PRO'
+        $DomesticPlan = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'MCOPSTN1'
+        $StandardPlan = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'MCOEV'
+
+        $addLicenses = @(
+            @{SkuId = $OfficeE3.SkuId },
+            @{SkuId = $PowerBIPro.SkuId },
+            @{SkuId = $DomesticPlan.SkuId },
+            @{SkuId = $StandardPlan.SkuId }
+        )
+
+        Set-MgUserLicense -UserId $Email -AddLicenses $addLicenses -RemoveLicenses @() -ErrorAction Stop
+
+        # Check if the user exists
+        $userExists = Get-MgUser -UserId $Email -ErrorAction SilentlyContinue
+
+        # If the user exists, the operation is successful
+        if ($userExists) {
+            $success = $true
+        }
+    }
+    catch {
+        # If an error is thrown, wait for 60 seconds before the next attempt
+        Start-Sleep -Seconds 60
+        Write-Output "Assigning Licenses..."
+    }
 }
-Update-MgUser -UserId $Email -BodyParameter $params
 
-$OfficeE3 = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'SPE_E3'
-$PowerBIPro = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'POWER_BI_PRO'
-$DomesticPlan = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'MCOPSTN1'
-$StandardPlan = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'MCOEV'
+$success = $false
 
-$addLicenses = @(
-    @{SkuId = $OfficeE3.SkuId},
-    @{SkuId = $PowerBIPro.SkuId},
-    @{SkuId = $DomesticPlan.SkuId},
-    @{SkuId = $StandardPlan.SkuId}
-)
+while (-not $success) {
+    try {
+        # Assign teams number
+        Set-CsPhoneNumberAssignment -Identity $Email -PhoneNumber $Phone -PhoneNumberType CallingPlan -ErrorAction Stop
 
-Set-MgUserLicense -UserId $Email -AddLicenses $addLicenses -RemoveLicenses @()
-
-# Assign teams number
-Set-CsPhoneNumberAssignment -Identity $Email -PhoneNumber $Phone -PhoneNumberType CallingPlan
-
-    
+        # If no error is thrown, the operation is successful
+        $success = $true
+    }
+    catch {
+        # If an error is thrown, wait for 15 seconds before the next attempt
+        Start-Sleep -Seconds 15
+        Write-Output "Assigning Number..."
+    }
+}
 

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -22,7 +23,13 @@ public class Main extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        String[] command = {"powershell.exe", "-ExecutionPolicy", "Bypass", "-File", "src/main/powershell/teamsScript.ps1"};
+
+        ProcessBuilder pb = new ProcessBuilder(command);
+        Process process = pb.start();
+        process.waitFor();
+
         launch();
 
     }
