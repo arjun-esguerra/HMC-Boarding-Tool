@@ -1,6 +1,3 @@
-Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
-Connect-MicrosoftTeams
-
 $P = Import-Csv -Path .\output.csv
 
 $row = $P[0]
@@ -43,6 +40,8 @@ $GroupPolicies = @{
 foreach ($groupPolicy in $GroupPolicies[$Office]) {
     Add-ADGroupMember -Identity $groupPolicy -Members $Username
 }
+
+Write-Output "Assigning Licenses..."
 
 # Assign licenses
 $success = $false
@@ -100,5 +99,7 @@ while (-not $success) {
         Write-Output "Assigning Number..."
     }
 
-    Write-Output "Licensing and number assignment complete"
 }
+
+Write-Output "Licensing and number assignment complete"
+

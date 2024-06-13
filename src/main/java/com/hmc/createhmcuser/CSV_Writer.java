@@ -1,9 +1,10 @@
 package com.hmc.createhmcuser;
 
 import javafx.application.Platform;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ProgressIndicator;
-import javafx.stage.StageStyle;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,8 +21,10 @@ public class CSV_Writer {
     private String title;
     private String office;
     private String number;
+    private Stage loadingStage;
 
-    public void submit(String firstName, String lastName, String password, String title, String office, String number) throws IOException, InterruptedException {
+
+    public void submit(String firstName, String lastName, String password, String title, String office, String number, Stage currentStage) throws IOException, InterruptedException {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -43,16 +46,11 @@ public class CSV_Writer {
             alert.setContentText("Password must be at least 8 characters with at least 1 number and 1 symbol.");
             alert.showAndWait();
         } else {
-            // Show a loading alert
-           /* Alert loadingAlert = new Alert(Alert.AlertType.INFORMATION);
-            loadingAlert.initStyle(StageStyle.UNDECORATED);
-            loadingAlert.setHeaderText("Loading...");
-            loadingAlert.getDialogPane().setContent(new ProgressIndicator());
-            loadingAlert.show();
-*/
+            // Hide the current view
+            currentStage.close();
             writeCSV();
-            Thread.sleep(10000);
             callScript();
+
         }
     }
 
@@ -79,17 +77,10 @@ public class CSV_Writer {
     }
 
     public void callScript() throws IOException, InterruptedException {
-        String[] command = {"powershell.exe", "-ExecutionPolicy", "Bypass", "-File", "src/main/powershell/script.ps1"};
+        String[] command = {"cmd.exe", "/c", "start", "powershell.exe", "-ExecutionPolicy", "Bypass", "-File", "src/main/powershell/script.ps1"};
 
         ProcessBuilder pb = new ProcessBuilder(command);
         Process process = pb.start();
-
-        // View Powershell terminal
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            System.out.println(line);
-        }
 
         process.waitFor();
     }

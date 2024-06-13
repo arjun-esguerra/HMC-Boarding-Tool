@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -41,7 +42,9 @@ public class Controller {
         submitButton.setOnAction(event -> {
             try {
                 csv_writer.submit(firstNameField.getText(), lastNameField.getText(),
-                        passwordField.getText(), titleField.getText(), officeComboBox.getValue(), numberComboBox.getValue());
+                        passwordField.getText(), titleField.getText(), officeComboBox.getValue(), numberComboBox.getValue(),
+                        (Stage) submitButton.getScene().getWindow());
+
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
