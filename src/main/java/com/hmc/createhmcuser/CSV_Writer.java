@@ -2,9 +2,7 @@ package com.hmc.createhmcuser;
 
 
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,7 +17,6 @@ public class CSV_Writer {
     private String title;
     private String office;
     private String number;
-    private Stage loadingStage;
 
 
     public void submit(String firstName, String lastName, String password, String title, String office, String number, Stage currentStage) throws IOException, InterruptedException {
@@ -48,15 +45,6 @@ public class CSV_Writer {
             currentStage.close();
             writeCSV();
             callScript();
-
-            Alert alert = new Alert(Alert.AlertType.NONE, "User created successfully!", ButtonType.OK);
-            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.initStyle(StageStyle.UTILITY);
-            stage.setResizable(false);
-            stage.setOnCloseRequest(event -> event.consume());
-
-            alert.showAndWait();
-
         }
     }
 
@@ -83,7 +71,7 @@ public class CSV_Writer {
     }
 
     public void callScript() throws IOException, InterruptedException {
-        String[] command = {"cmd.exe", "/k", "start", "powershell.exe", "-ExecutionPolicy", "Bypass", "-File", "src/main/powershell/script.ps1"};
+        String[] command = {"cmd.exe", "/k", "start", "cmd.exe", "/k", "powershell.exe", "-ExecutionPolicy", "Bypass", "-File", "src/main/powershell/script.ps1"};
 
         ProcessBuilder pb = new ProcessBuilder(command);
         Process process = pb.start();

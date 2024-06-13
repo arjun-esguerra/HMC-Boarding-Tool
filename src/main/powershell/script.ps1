@@ -1,4 +1,6 @@
-Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
+Write-Output "Connecting to Microsoft Graph API..."
+
+Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
 Connect-MicrosoftTeams
 
 $P = Import-Csv -Path .\output.csv
@@ -51,11 +53,8 @@ $success = $false
 
 while (-not $success) {
     try {
-        $params = @{
-            AccountEnabled = $true
-            UsageLocation  = 'US'
-        }
-        Update-MgUser -UserId $Email -BodyParameter $params -ErrorAction Stop
+
+        Update-MgUser -UserId $Email -UsageLocation 'US' -ErrorAction Stop
 
         $OfficeE3 = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'SPE_E3'
         $PowerBIPro = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'POWER_BI_PRO'
@@ -103,4 +102,7 @@ while (-not $success) {
     }
 
 }
+
+Write-Output "User successfully created!"
+
 
