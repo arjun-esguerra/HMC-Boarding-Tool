@@ -1,4 +1,3 @@
-Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
 Connect-MicrosoftTeams
 
 $skip = 0

@@ -1,14 +1,10 @@
 package com.hmc.createhmcuser;
 
-import javafx.application.Platform;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Alert;
-import javafx.scene.control.ProgressIndicator;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -77,7 +73,7 @@ public class CSV_Writer {
     }
 
     public void callScript() throws IOException, InterruptedException {
-        String[] command = {"cmd.exe", "/c", "start", "powershell.exe", "-ExecutionPolicy", "Bypass", "-File", "src/main/powershell/script.ps1"};
+        String[] command = {"cmd.exe", "/k", "start", "powershell.exe", "-ExecutionPolicy", "Bypass", "-File", "src/main/powershell/script.ps1"};
 
         ProcessBuilder pb = new ProcessBuilder(command);
         Process process = pb.start();

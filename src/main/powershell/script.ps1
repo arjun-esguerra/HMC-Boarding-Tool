@@ -1,3 +1,6 @@
+Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
+Connect-MicrosoftTeams
+
 $P = Import-Csv -Path .\output.csv
 
 $row = $P[0]
