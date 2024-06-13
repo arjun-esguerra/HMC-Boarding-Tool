@@ -20,7 +20,7 @@ $Phone = $row.'Phone Number'
 if ($office -eq 'Ontario 01' -or $office -eq 'Ontario 05') { $Path = "OU=Users,OU=Ontario,OU=HMC,DC=hmcarch,DC=com" } 
 else { $Path = "OU=Users,OU=$Office,OU=HMC,DC=hmcarch,DC=com" }
 
-    New-ADUser -GivenName $FirstName -Surname $LastName -Name $FullName -SamAccountName $Username -AccountPassword $Password -OtherAttributes @{
+    New-ADUser -GivenName $FirstName -Surname $LastName -Name $FullName -SamAccountName $Username -AccountPassword $Password -Enabled $true -OtherAttributes @{
         'title' = $Title
         'DisplayName' = $FullName
         'userPrincipalName' = $Email
@@ -103,6 +103,4 @@ while (-not $success) {
     }
 
 }
-
-Write-Output "Licensing and number assignment complete"
 

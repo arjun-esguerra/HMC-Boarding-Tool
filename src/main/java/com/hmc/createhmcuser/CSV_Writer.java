@@ -2,7 +2,9 @@ package com.hmc.createhmcuser;
 
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -46,6 +48,14 @@ public class CSV_Writer {
             currentStage.close();
             writeCSV();
             callScript();
+
+            Alert alert = new Alert(Alert.AlertType.NONE, "User created successfully!", ButtonType.OK);
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setResizable(false);
+            stage.setOnCloseRequest(event -> event.consume());
+
+            alert.showAndWait();
 
         }
     }
