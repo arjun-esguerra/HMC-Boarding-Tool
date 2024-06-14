@@ -24,7 +24,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        String[] command = {"powershell.exe", "-ExecutionPolicy", "Bypass", "-File", "src/main/powershell/teamsScript.ps1"};
+        String[] command = {"powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". 'src/main/powershell/script.ps1'; getPhoneNumbers"};
 
         ProcessBuilder pb = new ProcessBuilder(command);
         Process process = pb.start();

@@ -71,7 +71,7 @@ public class CSV_Writer {
     }
 
     public void callScript() throws IOException, InterruptedException {
-        String[] command = {"cmd.exe", "/k", "start", "cmd.exe", "/k", "powershell.exe", "-ExecutionPolicy", "Bypass", "-File", "src/main/powershell/script.ps1"};
+        String[] command = {"cmd.exe", "/k", "start", "cmd.exe", "/k", "powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". 'src/main/powershell/script.ps1'; createUser"};
 
         ProcessBuilder pb = new ProcessBuilder(command);
         Process process = pb.start();
