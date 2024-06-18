@@ -4,10 +4,14 @@ package com.hmc.createhmcuser;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CSV_Writer {
 
@@ -62,16 +66,17 @@ public class CSV_Writer {
                 .append(number);
 
         // create list of content in the csv file
-        List<String> lines = Files.readAllLines(Paths.get("output.csv"));
+        InputStream is = getClass().getResourceAsStream("/resources/output.csv");
+        List<String> lines = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.toList());
         if (lines.size() > 1) { lines.set(1, sb.toString());
         } else { lines.add(sb.toString()); }
 
-        Files.write(Paths.get("output.csv"), lines);
+        Files.write(Paths.get("/resources/output.csv"), lines);
 
     }
 
     public void callScript() throws IOException, InterruptedException {
-        String[] command = {"cmd.exe", "/k", "start", "cmd.exe", "/k", "powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". 'src/main/powershell/script.ps1'; createUser"};
+        String[] command = {"cmd.exe", "/k", "start", "cmd.exe", "/k", "powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". '/script.ps1'; createUser"};
 
         ProcessBuilder pb = new ProcessBuilder(command);
         Process process = pb.start();

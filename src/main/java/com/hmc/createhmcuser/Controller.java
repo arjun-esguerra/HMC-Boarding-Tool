@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -65,7 +67,11 @@ public class Controller {
     }
 
     public void loadPhoneNumbers() throws IOException {
-        String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/phone_numbers.json")));
+        InputStream is = getClass().getResourceAsStream("/phone_numbers.json");
+        if (is == null) {
+            throw new FileNotFoundException("Cannot find resource phone_numbers.json");
+        }
+        String jsonContent = new String(is.readAllBytes());
         JSONObject jsonObject = new JSONObject(jsonContent);
         JSONArray jsonArray = jsonObject.getJSONArray("TelephoneNumbers");
 
@@ -73,19 +79,17 @@ public class Controller {
 
         // loop through the jsonArray and add phone numbers
         for (int i = 0; i < jsonArray.length(); i++) {
-        JSONObject phoneNumberObject = jsonArray.getJSONObject(i);
-        String phoneNumber = phoneNumberObject.getString("TelephoneNumber");
-        String office = getOffice(phoneNumber);
+            JSONObject phoneNumberObject = jsonArray.getJSONObject(i);
+            String phoneNumber = phoneNumberObject.getString("TelephoneNumber");
+            String office = getOffice(phoneNumber);
 
-        // hash phone numbers by office
-        officePhoneNumbers.putIfAbsent(office, new ArrayList<>());
-        officePhoneNumbers.get(office).add(phoneNumber);
-
+            // hash phone numbers by office
+            officePhoneNumbers.putIfAbsent(office, new ArrayList<>());
+            officePhoneNumbers.get(office).add(phoneNumber);
         }
 
         // add event listener to office combo box
         officeComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
-
             // If the selected office is ONT01 or ONT05, set "Ontario" to key. Else, use the selected office as the key
             String key = (newValue.equals("Ontario 01") || newValue.equals("Ontario 05")) ? "Ontario" : newValue;
 
@@ -94,20 +98,15 @@ public class Controller {
                 List<String> phoneNumbers = officePhoneNumbers.get(key);
 
                 // convert list to observable list
-                ObservableList<String> observablePhoneNumbers = FXCollections.observableArrayList();
-                for (String phoneNumber : phoneNumbers) {
-                    observablePhoneNumbers.add(phoneNumber);
-                }
+                ObservableList<String> observablePhoneNumbers = FXCollections.observableArrayList(phoneNumbers);
 
                 numberComboBox.setItems(observablePhoneNumbers);
 
                 // sets combobox height
                 numberComboBox.show();
                 numberComboBox.hide();
-
             }
         });
-
     }
 
     public String getOffice(String phoneNumber) {
