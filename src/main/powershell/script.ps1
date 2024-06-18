@@ -55,7 +55,7 @@ function createUser
     Write-Host "First Name: $FirstName"
     Write-Host "Last Name: $LastName"
     Write-Host "Email Address: $Email"
-    Write-Host "Password: $PlainPassword'"
+    Write-Host "Password: $PlainPassword"
     Write-Host "Office: $Office"
     Write-Host "Phone Number: $Phone`n"
 
@@ -94,7 +94,8 @@ function createUser
         Add-ADGroupMember -Identity $groupPolicy -Members $Username
     }
 
-    Write-Output "`nAssigning Licenses..."
+    Write-Output " "
+    Write-Output "Assigning Licenses..."
 
     # Assign licenses
     $success = $false
