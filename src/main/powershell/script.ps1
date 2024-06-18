@@ -1,6 +1,5 @@
 function getPhoneNumbers
 {
-
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
     Connect-MicrosoftTeams
 
@@ -23,9 +22,11 @@ function getPhoneNumbers
     $jsonObject = @{ TelephoneNumbers = $telephoneNumbers }
     $json = $jsonObject | ConvertTo-Json
 
-    Set-Content -Path \phone_numbers.json -Value $json
-}
+    $tempDir = [System.IO.Path]::GetTempPath()
 
+    $tempFile = Join-Path -Path $tempDir -ChildPath "phone_numbers.json"
+    Set-Content -Path $tempFile -Value $json
+}
 
 function createUser
 {

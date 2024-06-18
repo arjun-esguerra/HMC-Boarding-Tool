@@ -6,7 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 
 public class App extends Application {
@@ -24,12 +28,19 @@ public class App extends Application {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        String[] command = {"powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". '../script.ps1'; getPhoneNumbers"};
+        InputStream scriptStream = App.class.getResourceAsStream("/script.ps1");
+
+        // Create a temporary file
+        File tempScript = File.createTempFile("script", ".ps1");
+        tempScript.deleteOnExit();
+
+        Files.copy(scriptStream, tempScript.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+        String[] command = {"powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". '" + tempScript.getAbsolutePath() + "'; getPhoneNumbers"};
         ProcessBuilder pb = new ProcessBuilder(command);
         Process process = pb.start();
         process.waitFor();
 
         launch();
-
     }
 }
