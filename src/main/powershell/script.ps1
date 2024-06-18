@@ -22,11 +22,9 @@ function getPhoneNumbers
     $jsonObject = @{ TelephoneNumbers = $telephoneNumbers }
     $json = $jsonObject | ConvertTo-Json
 
-    $tempDir = [System.IO.Path]::GetTempPath()
-
-    $tempFile = Join-Path -Path $tempDir -ChildPath "phone_numbers.json"
-    Set-Content -Path $tempFile -Value $json
+    Set-Content -Path .\classes\phone_numbers.json -Value $json
 }
+
 
 function createUser
 {
@@ -34,7 +32,9 @@ function createUser
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
     Connect-MicrosoftTeams
 
-    $P = Import-Csv -Path .\output.csv
+    $filePath = "./classes/output.csv"
+
+    $P = Import-Csv -Path $filePath
 
     $row = $P[0]
 
@@ -94,7 +94,7 @@ function createUser
         Add-ADGroupMember -Identity $groupPolicy -Members $Username
     }
 
-    Write-Output "Assigning Licenses..."
+    Write-Output "`nAssigning Licenses..."
 
     # Assign licenses
     $success = $false
@@ -130,8 +130,8 @@ function createUser
         }
         catch
         {
-            Start-Sleep -Seconds 60
-            Write-Output "Assigning Licenses..."
+            Start-Sleep -Seconds 120
+            Write-Output "."
         }
     }
     
@@ -151,7 +151,6 @@ function createUser
         {
             Start-Sleep -Seconds 30
             Write-Output "Assigning Number..."
-            Write-Output $_
 
         }
 

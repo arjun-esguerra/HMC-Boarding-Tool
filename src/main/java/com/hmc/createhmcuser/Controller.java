@@ -67,11 +67,7 @@ public class Controller {
     }
 
     public void loadPhoneNumbers() throws IOException {
-        InputStream is = getClass().getResourceAsStream("/phone_numbers.json");
-        if (is == null) {
-            throw new FileNotFoundException("Cannot find resource phone_numbers.json");
-        }
-        String jsonContent = new String(is.readAllBytes());
+        String jsonContent = new String(Files.readAllBytes(Paths.get("./classes/phone_numbers.json")));
         JSONObject jsonObject = new JSONObject(jsonContent);
         JSONArray jsonArray = jsonObject.getJSONArray("TelephoneNumbers");
 
