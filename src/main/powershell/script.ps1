@@ -48,6 +48,8 @@ function createUser
     $Office = $row.'Office'
     $Phone = $row.'Phone Number'
 
+    $FormattedPhone = $Phone -replace "^1(...)(...)(....)", '$1.$2.$3'
+
     # gets plain password
     $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Password)
     $PlainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
@@ -74,7 +76,7 @@ function createUser
         'DisplayName' = $FullName
         'userPrincipalName' = $Email
         'mail' = $Email
-        'telephoneNumber' = $Phone
+        'telephoneNumber' = $FormattedPhone
     } -Path $Path
 
 
