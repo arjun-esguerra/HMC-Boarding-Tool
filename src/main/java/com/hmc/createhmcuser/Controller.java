@@ -67,7 +67,7 @@ public class Controller {
     }
 
     public void loadPhoneNumbers() throws IOException {
-        String jsonContent = new String(Files.readAllBytes(Paths.get("./classes/phone_numbers.json")));
+        String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/phone_numbers.json")));
         JSONObject jsonObject = new JSONObject(jsonContent);
         JSONArray jsonArray = jsonObject.getJSONArray("TelephoneNumbers");
 

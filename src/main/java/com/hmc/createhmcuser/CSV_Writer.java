@@ -8,10 +8,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CSV_Writer {
 
@@ -65,21 +63,15 @@ public class CSV_Writer {
                 .append(office).append(',')
                 .append(number);
 
-        // Create a path to the file
-        Path filePath = Paths.get("./classes/output.csv");
+        List<String> lines = Files.readAllLines(Paths.get("output.csv"));
+        if (lines.size() > 1) { lines.set(1, sb.toString());
+        } else { lines.add(sb.toString()); }
 
-        // create list of content in the csv file
-        List<String> lines = Files.exists(filePath) ? Files.readAllLines(filePath) : new ArrayList<>();
-        if (lines.size() > 1) {
-            lines.set(1, sb.toString());
-        } else {
-            lines.add(sb.toString());
-        }
-        Files.write(filePath, lines);
+        Files.write(Paths.get("output.csv"), lines);
     }
 
     public void callScript() throws IOException, InterruptedException {
-        String[] command = {"cmd.exe", "/k", "start", "cmd.exe", "/k", "powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". './classes/script.ps1'; createUser"};
+        String[] command = {"cmd.exe", "/k", "start", "cmd.exe", "/k", "powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". 'src/main/powershell/script.ps1'; createUser"};
 
         ProcessBuilder pb = new ProcessBuilder(command);
         Process process = pb.start();

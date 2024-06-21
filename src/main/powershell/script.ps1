@@ -22,7 +22,7 @@ function getPhoneNumbers
     $jsonObject = @{ TelephoneNumbers = $telephoneNumbers }
     $json = $jsonObject | ConvertTo-Json
 
-    Set-Content -Path .\classes\phone_numbers.json -Value $json
+    Set-Content -Path .\src\main\resources\phone_numbers.json -Value $json
 }
 
 
@@ -32,9 +32,7 @@ function createUser
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
     Connect-MicrosoftTeams
 
-    $filePath = "./classes/output.csv"
-
-    $P = Import-Csv -Path $filePath
+    $P = Import-Csv -Path .\output.csv
 
     $row = $P[0]
 
