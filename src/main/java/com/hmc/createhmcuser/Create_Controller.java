@@ -3,6 +3,7 @@ package com.hmc.createhmcuser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
@@ -19,7 +20,7 @@ import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Create_User_Controller {
+public class Create_Controller {
 
     @FXML private TextField firstNameField;
     @FXML private TextField lastNameField;
@@ -27,13 +28,15 @@ public class Create_User_Controller {
     @FXML private TextField titleField;
     @FXML private ComboBox<String> officeComboBox;
     @FXML private ComboBox<String> numberComboBox;
+    @FXML private Button backButton;
     @FXML private Button submitButton;
 
+    private Scene previousScene;
     private Map<String, List<String>> officePhoneNumbers;
     private CSV_Writer csv_writer;
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize(Stage stage, Scene previousScene) throws IOException {
         setOfficeComboBox();
         loadPhoneNumbers();
 
@@ -48,6 +51,10 @@ public class Create_User_Controller {
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
+        });
+
+        backButton.setOnAction(event -> {
+            stage.setScene(previousScene);
         });
     }
 

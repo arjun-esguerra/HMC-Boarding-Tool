@@ -11,28 +11,25 @@ import java.io.IOException;
 
 public class App extends Application {
 
+    private Parent createRoot;
+    private Create_Controller createController;
+
     @Override
     public void start(Stage stage) throws IOException {
         // Load and display homepage
-        FXMLLoader homepageLoader = new FXMLLoader(App.class.getResource("homepage_view.fxml"));
-        Parent homepageRoot = homepageLoader.load();
-        Homepage_Controller homepageCreateUserController = homepageLoader.getController();
-        homepageCreateUserController.initialize();
-
+        FXMLLoader homeLoader = new FXMLLoader(App.class.getResource("homepage_view.fxml"));
+        Parent homepageRoot = homeLoader.load();
         Scene scene = new Scene(homepageRoot);
         stage.setScene(scene);
+
+        Home_Controller homeController = homeLoader.getController();
+        homeController.initialize(stage, scene); // Pass the scene here
+
         stage.setResizable(false);
         stage.show();
 
-
-        // Load create user view in the background
-        FXMLLoader createUserLoader = new FXMLLoader(App.class.getResource("create_user_view.fxml"));
-        Parent createUserRoot = createUserLoader.load();
-        Create_User_Controller createUserCreateUserController = createUserLoader.getController();
-        createUserCreateUserController.initialize();
-
-
     }
+
 
     public static void main(String[] args) throws IOException, InterruptedException {
         String[] command = {"powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". 'src/main/powershell/script.ps1'; getPhoneNumbers"};

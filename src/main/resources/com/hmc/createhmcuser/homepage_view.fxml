@@ -5,18 +5,32 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hmc.createhmcuser.Homepage_Controller">
+<VBox prefHeight="739.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hmc.createhmcuser.Home_Controller">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="292.0" prefWidth="286.0" VBox.vgrow="ALWAYS">
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="490.0" prefWidth="537.0" VBox.vgrow="ALWAYS">
       <children>
-            <ImageView fitHeight="94.0" fitWidth="200.0" layoutX="43.0" layoutY="41.0">
+          <ImageView fitHeight="130.0" fitWidth="288.0" layoutX="125.0" layoutY="107.0">
                <image>
                   <Image url="@../../../hmc_logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="createButton" layoutX="68.0" layoutY="173.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Create User" />
-            <Button fx:id="deleteButton" layoutX="68.0" layoutY="212.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Delete User" />
+            <Button fx:id="createButton" layoutX="94.0" layoutY="375.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="349.0" text="Create User">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteButton" layoutX="94.0" layoutY="471.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="349.0" text="Delete User">
+               <font>
+                  <Font size="28.0" />
+               </font></Button>
+            <Text layoutX="122.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Onboarding Tool" wrappingWidth="295.0">
+               <font>
+                  <Font name="Microsoft YaHei Light" size="37.0" />
+               </font>
+            </Text>
       </children>
     </AnchorPane>
   </children>

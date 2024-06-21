@@ -1,7 +1,7 @@
 function getPhoneNumbers
 {
-    Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
-    Connect-MicrosoftTeams
+   Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
+   Connect-MicrosoftTeams
 
     $skip = 0
     $allNumbers = @()
