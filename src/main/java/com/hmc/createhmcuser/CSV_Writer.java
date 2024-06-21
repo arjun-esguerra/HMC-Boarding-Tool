@@ -3,12 +3,9 @@ package com.hmc.createhmcuser;
 
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CSV_Writer {

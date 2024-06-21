@@ -10,17 +10,28 @@ import java.io.IOException;
 
 
 public class App extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("input_view.fxml"));
-        Parent root = fxmlLoader.load();
+        // Load and display homepage
+        FXMLLoader homepageLoader = new FXMLLoader(App.class.getResource("homepage_view.fxml"));
+        Parent homepageRoot = homepageLoader.load();
+        Homepage_Controller homepageCreateUserController = homepageLoader.getController();
+        homepageCreateUserController.initialize();
 
-        Controller controller = fxmlLoader.getController();
-        controller.initialize();
-
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(homepageRoot);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
+
+
+        // Load create user view in the background
+        FXMLLoader createUserLoader = new FXMLLoader(App.class.getResource("create_user_view.fxml"));
+        Parent createUserRoot = createUserLoader.load();
+        Create_User_Controller createUserCreateUserController = createUserLoader.getController();
+        createUserCreateUserController.initialize();
+
+
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
