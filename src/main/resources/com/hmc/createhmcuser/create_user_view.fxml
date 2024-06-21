@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
@@ -20,10 +19,7 @@
                   <Image url="@../../../back_button.png" />
                </image>
             </ImageView>
-          <Button fx:id="backButton" layoutX="19.0" layoutY="18.0" mnemonicParsing="false" opacity="0.0" prefHeight="51.0" prefWidth="49.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
+          <Button fx:id="backButton" layoutX="15.0" layoutY="18.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="56.0" visible="false" />
           <ImageView fitHeight="130.0" fitWidth="288.0" layoutX="125.0" layoutY="85.0">
                <image>
                   <Image url="@../../../hmc_logo.png" />
@@ -33,22 +29,34 @@
                <font>
                   <Font size="20.0" />
                </font></Text>
-            <TextField fx:id="firstNameField" layoutX="208.0" layoutY="263.0" prefHeight="38.0" prefWidth="235.0" />
+            <TextField fx:id="firstNameField" layoutX="208.0" layoutY="263.0" prefHeight="38.0" prefWidth="235.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
             <Text layoutX="98.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:">
                <font>
                   <Font size="20.0" />
                </font></Text>
-            <TextField fx:id="lastNameField" layoutX="208.0" layoutY="313.0" prefHeight="38.0" prefWidth="235.0" />
+            <TextField fx:id="lastNameField" layoutX="208.0" layoutY="313.0" prefHeight="38.0" prefWidth="235.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
             <Text layoutX="98.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
                <font>
                   <Font size="20.0" />
                </font></Text>
-            <TextField fx:id="passwordField" layoutX="208.0" layoutY="363.0" prefHeight="38.0" prefWidth="235.0" />
+            <TextField fx:id="passwordField" layoutX="208.0" layoutY="363.0" prefHeight="38.0" prefWidth="235.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
             <Text layoutX="98.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:">
                <font>
                   <Font size="20.0" />
                </font></Text>
-            <TextField fx:id="titleField" layoutX="208.0" layoutY="413.0" prefHeight="38.0" prefWidth="235.0" />
+            <TextField fx:id="titleField" layoutX="208.0" layoutY="413.0" prefHeight="38.0" prefWidth="235.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
             <Text layoutX="98.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Office:">
                <font>
                   <Font size="20.0" />

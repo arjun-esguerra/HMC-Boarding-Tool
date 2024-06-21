@@ -3,6 +3,7 @@ package com.hmc.createhmcuser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -47,7 +48,6 @@ public class Create_Controller {
                 csv_writer.submit(firstNameField.getText(), lastNameField.getText(),
                         passwordField.getText(), titleField.getText(), officeComboBox.getValue(), numberComboBox.getValue(),
                         (Stage) submitButton.getScene().getWindow());
-
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }

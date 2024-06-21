@@ -32,12 +32,14 @@ public class CSV_Writer {
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("All fields must be filled out!");
+            alert.getDialogPane().setStyle("-fx-font-size: 20px;");
             alert.showAndWait();
         } else if (password.length() < 8 || !password.matches(".*\\d.*") || !password.matches(".*\\W.*")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("Password must be at least 8 characters with at least 1 number and 1 symbol.");
+            alert.getDialogPane().setStyle("-fx-font-size: 20px;");
             alert.showAndWait();
         } else {
             // Hide the current view
