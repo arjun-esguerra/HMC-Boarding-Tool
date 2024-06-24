@@ -11,9 +11,6 @@ import java.io.IOException;
 
 public class App extends Application {
 
-    private Parent createRoot;
-    private Create_Controller createController;
-
     @Override
     public void start(Stage stage) throws IOException {
         // Load and display homepage

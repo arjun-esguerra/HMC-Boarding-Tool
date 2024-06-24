@@ -12,7 +12,10 @@ import java.io.IOException;
 public class Home_Controller {
 
     @FXML private Button createButton;
+    @FXML private Button deleteButton;
+
     private Scene createScene;
+    private Scene deleteScene;
 
     public void initialize(Stage stage, Scene homeScene) throws IOException {
         // Load create user view in the background
@@ -29,6 +32,24 @@ public class Home_Controller {
         // Go to create scene
         createButton.setOnAction(event -> {
             stage.setScene(createScene);
+            stage.setResizable(false);
+            stage.show();
+        });
+
+        // Load delete user view in the background
+        FXMLLoader deleteLoader = new FXMLLoader(App.class.getResource("delete_user_view.fxml"));
+        Parent deleteRoot = deleteLoader.load();
+        Delete_Controller deleteController = deleteLoader.getController();
+
+        deleteController.initialize(stage, homeScene);
+
+        if (deleteScene == null) {
+            deleteScene = new Scene(deleteRoot);
+        }
+
+        // Go to delete scene
+        deleteButton.setOnAction(event -> {
+            stage.setScene(deleteScene);
             stage.setResizable(false);
             stage.show();
         });

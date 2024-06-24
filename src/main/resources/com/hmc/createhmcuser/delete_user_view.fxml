@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="656.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hmc.createhmcuser.Delete_Controller">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="513.0" prefWidth="407.0" VBox.vgrow="ALWAYS">
+      <children>
+          <ImageView fitHeight="44.0" fitWidth="46.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                  <Image url="@../../../back_button.png" />
+              </image>
+          </ImageView>
+            <Button fx:id="backButton" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" opacity="0.0" prefHeight="43.0" prefWidth="43.0" />
+          <ImageView fitHeight="130.0" fitWidth="288.0" layoutX="91.0" layoutY="58.0">
+              <image>
+                  <Image url="@../../../hmc_logo.png" />
+              </image>
+          </ImageView>
+            <Button fx:id="deleteButton" layoutX="70.0" layoutY="554.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="329.0" text="Delete User">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

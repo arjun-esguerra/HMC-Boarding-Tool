@@ -9,25 +9,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="739.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hmc.createhmcuser.Home_Controller">
+<VBox prefHeight="656.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hmc.createhmcuser.Home_Controller">
   <children>
-      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="490.0" prefWidth="537.0" VBox.vgrow="ALWAYS">
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="656.0" prefWidth="470.0" VBox.vgrow="ALWAYS">
       <children>
-          <ImageView fitHeight="130.0" fitWidth="288.0" layoutX="125.0" layoutY="107.0">
-               <image>
+          <ImageView fitHeight="130.0" fitWidth="288.0" layoutX="91.0" layoutY="58.0">
+              <image>
                   <Image url="@../../../hmc_logo.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="createButton" layoutX="94.0" layoutY="375.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="349.0" text="Create User">
+              </image>
+          </ImageView>
+            <Button fx:id="createButton" layoutX="76.0" layoutY="371.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="319.0" text="Create User">
                <font>
-                  <Font size="28.0" />
+                  <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="deleteButton" layoutX="94.0" layoutY="471.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="349.0" text="Delete User">
+            <Button fx:id="deleteButton" layoutX="75.0" layoutY="437.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="319.0" text="Delete User">
                <font>
-                  <Font size="28.0" />
+                  <Font size="16.0" />
                </font></Button>
-            <Text layoutX="122.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Onboarding Tool" wrappingWidth="295.0">
+            <Text layoutX="88.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Onboarding Tool" wrappingWidth="295.0">
                <font>
                   <Font name="Microsoft YaHei Light" size="37.0" />
                </font>
