@@ -1,4 +1,4 @@
-package com.hmc.createhmcuser;
+package com.hmc.boardingtool;
 
 import java.io.IOException;
 

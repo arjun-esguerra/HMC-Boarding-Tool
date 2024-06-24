@@ -1,4 +1,4 @@
-package com.hmc.createhmcuser;
+package com.hmc.boardingtool;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,10 +17,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
-public class Delete_Controller {
+public class Offboard_Controller {
 
     @FXML private Button backButton;
-    @FXML private Button deleteButton;
+    @FXML private Button offboardButton;
     @FXML private ListView usersListView;
     @FXML private TextField searchField;
 
@@ -36,7 +36,7 @@ public class Delete_Controller {
         searchListener();
 
     }
-    
+
     public void setListView() {
         try {
             String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/users.json")));

@@ -84,7 +84,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.hmc.createhmcuser/com.hmc.createhmcuser.Main</mainClass>
+                            <mainClass>com.hmc.createhmcuser/com.hmc.boardingtool.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
@@ -109,7 +109,7 @@
                             <transformers>
                                 <transformer implementation=
                                                      "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.hmc.createhmcuser.Main</mainClass>
+                                    <mainClass>com.hmc.boardingtool.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

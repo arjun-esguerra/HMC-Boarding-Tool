@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="656.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hmc.createhmcuser.Delete_Controller">
+<VBox prefHeight="656.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hmc.boardingtool.Offboard_Controller">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="513.0" prefWidth="407.0" VBox.vgrow="ALWAYS">
       <children>
@@ -34,7 +34,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="deleteButton" layoutX="70.0" layoutY="554.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="329.0" text="Delete User">
+            <Button fx:id="deleteButton" layoutX="70.0" layoutY="554.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="329.0" text="Offboard User">
                <font>
                   <Font size="16.0" />
                </font></Button>

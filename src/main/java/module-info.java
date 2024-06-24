@@ -4,6 +4,6 @@ module com.hmc.createhmcuser {
     requires org.json;
 
 
-    opens com.hmc.createhmcuser to javafx.fxml;
-    exports com.hmc.createhmcuser;
+    opens com.hmc.boardingtool to javafx.fxml;
+    exports com.hmc.boardingtool;
 }

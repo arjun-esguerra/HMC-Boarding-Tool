@@ -1,9 +1,8 @@
-package com.hmc.createhmcuser;
+package com.hmc.boardingtool;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -21,7 +20,7 @@ import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Create_Controller {
+public class Onboard_Controller {
 
     @FXML private TextField firstNameField;
     @FXML private TextField lastNameField;

@@ -181,7 +181,7 @@ function createUser
 
     }
 
-    Write-Output "User successfully created!"
+    Write-Output "User successfully onboarded!"
 
 
 }
