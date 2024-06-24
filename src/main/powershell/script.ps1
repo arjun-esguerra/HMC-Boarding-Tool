@@ -25,6 +25,30 @@ function getPhoneNumbers
     Set-Content -Path .\src\main\resources\phone_numbers.json -Value $json
 }
 
+function getNames
+{
+    $OUs = @("Los Angeles", "San Francisco", "Ontario", "San Diego", "San Jose", "Sacramento")
+
+    $allNames = @()
+
+    # Loop over each OU
+    foreach ($OU in $OUs) {
+        $users = Get-ADUser -Filter * -SearchBase "OU=Users,OU=$OU,OU=HMC,DC=hmcarch,DC=com"
+
+        foreach ($user in $users) {
+            $allNames += $user.Name
+        }
+    }
+
+    $sortedNames = $allNames | Sort-Object
+
+    # Convert the sorted names to a JSON object
+    $jsonObject = @{ UserNames = $sortedNames }
+    $json = $jsonObject | ConvertTo-Json
+
+    # Write the JSON object to a file
+    Set-Content -Path ..\resources\users.json -Value $json
+}
 
 function createUser
 {
