@@ -47,7 +47,7 @@ function getNames
     $json = $jsonObject | ConvertTo-Json
 
     # Write the JSON object to a file
-    Set-Content -Path ..\resources\users.json -Value $json
+    Set-Content -Path .\src\main\resources\users.json -Value $json
 }
 
 function createUser
