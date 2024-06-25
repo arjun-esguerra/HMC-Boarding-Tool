@@ -1,7 +1,7 @@
 function getPhoneNumbers
 {
-   Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
-   Connect-MicrosoftTeams
+    Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
+    Connect-MicrosoftTeams
 
     $skip = 0
     $allNumbers = @()
@@ -32,10 +32,12 @@ function getNames
     $allNames = @()
 
     # Loop over each OU
-    foreach ($OU in $OUs) {
+    foreach ($OU in $OUs)
+    {
         $users = Get-ADUser -Filter * -SearchBase "OU=Users,OU=$OU,OU=HMC,DC=hmcarch,DC=com"
 
-        foreach ($user in $users) {
+        foreach ($user in $users)
+        {
             $allNames += $user.Name
         }
     }
@@ -56,7 +58,7 @@ function createUser
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
     Connect-MicrosoftTeams
 
-    $P = Import-Csv -Path .\output.csv
+    $P = Import-Csv -Path .\src\main\resources\output.csv
 
     $row = $P[0]
 
@@ -159,8 +161,8 @@ function createUser
             Write-Output "."
         }
     }
-    
-    
+
+
     # Assign teams number
     $success = $false
 
@@ -183,6 +185,27 @@ function createUser
 
     Write-Output "User successfully onboarded!"
 
+}
+
+function deleteUser($Name)
+{
+    Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
+    $nameParts = $Name -split ' '
+    $userEmail = ($nameParts[0].ToLower() + '.' + $nameParts[1].ToLower() + '@hmcarchitects.com')
+
+    $allLicenses = Get-MgUserLicenseDetail -UserId $userEmail -Property SkuPartNumber
+
+    $licenseSkuIds = $allLicenses.SkuPartNumber | ForEach-Object {
+        $skuPartNumber = $_
+        $sku = Get-MgSubscribedSku -All | Where-Object { $_.SkuPartNumber -eq $skuPartNumber }
+        $sku.SkuId
+    }
+
+    if ($licenseSkuIds) {
+        Set-MgUserLicense -UserId $userEmail -RemoveLicenses $licenseSkuIds -AddLicenses @{}
+    }
+
 
 }
+
 

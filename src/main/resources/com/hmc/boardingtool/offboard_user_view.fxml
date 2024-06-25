@@ -24,7 +24,7 @@
                   <Image url="@../../../hmc_logo.png" />
               </image>
           </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="43.0" layoutX="91.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="23.0" layoutX="101.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../search_bar.png" />
                </image>
@@ -34,11 +34,11 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="deleteButton" layoutX="70.0" layoutY="554.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="329.0" text="Offboard User">
+            <Button fx:id="submitButton" layoutX="70.0" layoutY="554.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="329.0" text="Offboard User">
                <font>
                   <Font size="16.0" />
                </font></Button>
-            <ListView fx:id="usersListView" layoutX="91.0" layoutY="262.0" prefHeight="252.0" prefWidth="288.0" />
+            <ListView fx:id="usersListView" layoutX="91.0" layoutY="272.0" prefHeight="252.0" prefWidth="288.0" />
       </children>
     </AnchorPane>
   </children>

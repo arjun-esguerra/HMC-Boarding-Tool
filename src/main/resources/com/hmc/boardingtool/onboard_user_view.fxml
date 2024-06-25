@@ -61,12 +61,12 @@
                <font>
                   <Font size="16.0" />
                </font></Text>
-            <ComboBox fx:id="officeComboBox" layoutX="184.0" layoutY="440.0" prefHeight="32.0" prefWidth="216.0" />
+            <ComboBox fx:id="officeComboBox" layoutX="184.0" layoutY="440.0" prefHeight="32.0" prefWidth="216.0" style="-fx-font: 15px &quot;System&quot;;" />
             <Text layoutX="71.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number:">
                <font>
                   <Font size="16.0" />
                </font></Text>
-            <ComboBox fx:id="numberComboBox" layoutX="183.0" layoutY="490.0" prefHeight="32.0" prefWidth="216.0" />
+            <ComboBox fx:id="numberComboBox" layoutX="183.0" layoutY="490.0" prefHeight="32.0" prefWidth="216.0" style="-fx-font: 15px &quot;System&quot;;" />
             <Button fx:id="submitButton" layoutX="70.0" layoutY="554.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="329.0" text="Onboard User">
                <font>
                   <Font size="16.0" />

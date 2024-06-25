@@ -37,7 +37,7 @@ public class Home_Controller {
         });
 
         // Load delete user view in the background
-        FXMLLoader offboardLoader = new FXMLLoader(App.class.getResource("delete_user_view.fxml"));
+        FXMLLoader offboardLoader = new FXMLLoader(App.class.getResource("offboard_user_view.fxml"));
         Parent offboardRoot = offboardLoader.load();
         Offboard_Controller offboardController = offboardLoader.getController();
 

@@ -17,7 +17,6 @@ public class CSV_Writer {
     private String office;
     private String number;
 
-
     public void submit(String firstName, String lastName, String password, String title, String office, String number, Stage currentStage) throws IOException, InterruptedException {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,16 +33,15 @@ public class CSV_Writer {
             alert.setContentText("All fields must be filled out!");
             alert.getDialogPane().setStyle("-fx-font-size: 20px;");
             alert.showAndWait();
-        } else if (password.length() < 8 || !password.matches(".*\\d.*") || !password.matches(".*\\W.*")) {
+        } else if (password.length() < 8 || !password.matches(".*\\d.*") || !password.matches(".*\\W.*") || !password.matches(".*[A-Z].*")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Password must be at least 8 characters with at least 1 number and 1 symbol.");
+            alert.setContentText("Password must be at least 8 characters with at least 1 uppercase letter, 1 number, and 1 symbol.");
             alert.getDialogPane().setStyle("-fx-font-size: 20px;");
             alert.showAndWait();
         } else {
             // Hide the current view
-            currentStage.close();
             writeCSV();
             callScript();
         }
@@ -62,19 +60,17 @@ public class CSV_Writer {
                 .append(office).append(',')
                 .append(number);
 
-        List<String> lines = Files.readAllLines(Paths.get("output.csv"));
+        List<String> lines = Files.readAllLines(Paths.get("src/main/resources/output.csv"));
         if (lines.size() > 1) { lines.set(1, sb.toString());
         } else { lines.add(sb.toString()); }
 
-        Files.write(Paths.get("output.csv"), lines);
+        Files.write(Paths.get("src/main/resources/output.csv"), lines);
     }
 
-    public void callScript() throws IOException, InterruptedException {
+    public void callScript() throws IOException {
         String[] command = {"cmd.exe", "/k", "start", "cmd.exe", "/k", "powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". 'src/main/powershell/script.ps1'; createUser"};
-
         ProcessBuilder pb = new ProcessBuilder(command);
-        Process process = pb.start();
-        process.waitFor();
+        pb.start();
     }
 
 }
