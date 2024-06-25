@@ -68,7 +68,7 @@ public class CSV_Writer {
     }
 
     public void callScript() throws IOException {
-        String[] command = {"cmd.exe", "/k", "start", "cmd.exe", "/k", "powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". 'src/main/powershell/script.ps1'; createUser"};
+        String[] command = {"cmd.exe", "/k", "start", "cmd.exe", "/k", "powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". 'src/main/powershell/script.ps1'; onboardUser"};
         ProcessBuilder pb = new ProcessBuilder(command);
         pb.start();
     }

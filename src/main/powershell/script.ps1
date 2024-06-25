@@ -52,7 +52,7 @@ function getNames
     Set-Content -Path .\src\main\resources\users.json -Value $json
 }
 
-function createUser
+function onboardUser
 {
 
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
@@ -187,8 +187,9 @@ function createUser
 
 }
 
-function deleteUser($Name)
+function offboardUser($Name)
 {
+    # Remove licenses
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
     $nameParts = $Name -split ' '
     $userEmail = ($nameParts[0].ToLower() + '.' + $nameParts[1].ToLower() + '@hmcarchitects.com')
@@ -204,6 +205,12 @@ function deleteUser($Name)
     if ($licenseSkuIds) {
         Set-MgUserLicense -UserId $userEmail -RemoveLicenses $licenseSkuIds -AddLicenses @{}
     }
+
+    # Move user to Separations OU
+    $user = Get-ADUser -Filter { UserPrincipalName -eq $userEmail } -Properties ObjectGUID
+    Move-ADObject -Identity $user.ObjectGUID -TargetPath "OU=Separations,OU=HMC,DC=hmcarch,DC=com"
+
+
 
 
 }

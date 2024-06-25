@@ -77,7 +77,7 @@ public class Offboard_Controller {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                String[] command = {"powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". 'src/main/powershell/script.ps1'; deleteUser '" + fullName + "'"};
+                String[] command = {"powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". 'src/main/powershell/script.ps1'; offboardUser '" + fullName + "'"};
                 ProcessBuilder pb = new ProcessBuilder(command);
                 try {
                     Process process = pb.start();
