@@ -59,6 +59,7 @@ function onboardUser {
     Connect-MicrosoftTeams
 
     $P = Import-Csv -Path .\src\main\resources\output.csv
+
     $row = $P[0]
 
     $FirstName = $row.'First Name'
@@ -70,6 +71,7 @@ function onboardUser {
     $Email = $row.'Email'
     $Office = $row.'Office'
     $Phone = $row.'Phone Number'
+
     $FormattedPhone = $Phone -replace "^1(...)(...)(....)", '$1.$2.$3'
 
     # gets plain password
@@ -190,6 +192,9 @@ function offboardUser($Name) {
     if ($licenseSkuIds) {
         Set-MgUserLicense -UserId $userEmail -RemoveLicenses $licenseSkuIds -AddLicenses @{ }
     }
+
+    # Block and disable user
+    Disable-ADAccount -Identity $Username
 
     # Move user to Separations OU
     $user = Get-ADUser -Filter { UserPrincipalName -eq $userEmail } -Properties ObjectGUID
