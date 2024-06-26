@@ -189,11 +189,16 @@ function onboardUser
 
 function offboardUser($Name)
 {
-    # Remove licenses
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
+    Connect-ExchangeOnline
+
     $nameParts = $Name -split ' '
     $userEmail = ($nameParts[0].ToLower() + '.' + $nameParts[1].ToLower() + '@hmcarchitects.com')
+    Set-Mailbox -Identity $userEmail -Type Shared
 
+
+    <#
+    # Remove licenses
     $allLicenses = Get-MgUserLicenseDetail -UserId $userEmail -Property SkuPartNumber
 
     $licenseSkuIds = $allLicenses.SkuPartNumber | ForEach-Object {
@@ -209,8 +214,7 @@ function offboardUser($Name)
     # Move user to Separations OU
     $user = Get-ADUser -Filter { UserPrincipalName -eq $userEmail } -Properties ObjectGUID
     Move-ADObject -Identity $user.ObjectGUID -TargetPath "OU=Separations,OU=HMC,DC=hmcarch,DC=com"
-
-
+    #>
 
 
 }
