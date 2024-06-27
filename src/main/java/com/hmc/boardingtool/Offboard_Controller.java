@@ -42,7 +42,7 @@ public class Offboard_Controller {
 
     public void setListView() {
         try {
-            String jsonContent = new String(Files.readAllBytes(Paths.get("src/main/resources/users.json")));
+            String jsonContent = new String(Files.readAllBytes(Paths.get("./classes/users.json")));
             JSONObject jsonObject = new JSONObject(jsonContent);
             JSONArray userNamesArray = jsonObject.getJSONArray("UserNames");
 
@@ -77,7 +77,7 @@ public class Offboard_Controller {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                String[] command = {"powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". 'src/main/powershell/script.ps1'; offboardUser '" + fullName + "'"};
+                String[] command = {"powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". './classes/script.ps1'; offboardUser '" + fullName + "'"};
                 ProcessBuilder pb = new ProcessBuilder(command);
                 try {
                     Process process = pb.start();

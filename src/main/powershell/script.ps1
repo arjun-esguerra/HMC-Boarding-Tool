@@ -20,7 +20,7 @@ function getPhoneNumbers {
     $jsonObject = @{ TelephoneNumbers = $telephoneNumbers }
     $json = $jsonObject | ConvertTo-Json
 
-    Set-Content -Path .\src\main\resources\phone_numbers.json -Value $json
+    Set-Content -Path .\classes\phone_numbers.json -Value $json
 }
 
 function getNames {
@@ -50,7 +50,7 @@ function getNames {
     $json = $jsonObject | ConvertTo-Json
 
     # Write the JSON object to a file
-    Set-Content -Path .\src\main\resources\users.json -Value $json
+    Set-Content -Path .\classes\users.json -Value $json
 }
 
 function onboardUser {
@@ -58,7 +58,9 @@ function onboardUser {
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All -NoWelcome
     Connect-MicrosoftTeams
 
-    $P = Import-Csv -Path .\src\main\resources\output.csv
+    $filePath = "./classes/output.csv"
+
+    $P = Import-Csv -Path $filePath
 
     $row = $P[0]
 
@@ -195,6 +197,10 @@ function offboardUser($Name) {
 
     # Block and disable user
     Disable-ADAccount -Identity $Username
+    $params = @{
+        accountEnabled = $false
+    }
+    Update-MgUser -UserId $userEmail -BodyParameter $params
 
     # Move user to Separations OU
     $user = Get-ADUser -Filter { UserPrincipalName -eq $userEmail } -Properties ObjectGUID
