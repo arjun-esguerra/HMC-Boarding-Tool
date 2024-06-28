@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 
@@ -13,6 +14,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        // Set the taskbar icon
+
+
         // Load and display homepage
         FXMLLoader homeLoader = new FXMLLoader(App.class.getResource("homepage_view.fxml"));
         Parent homepageRoot = homeLoader.load();

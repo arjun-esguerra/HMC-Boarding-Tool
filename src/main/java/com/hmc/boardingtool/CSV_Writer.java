@@ -3,6 +3,9 @@ package com.hmc.boardingtool;
 
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,6 +45,13 @@ public class CSV_Writer {
             alert.setContentText("Password must be at least 8 characters with at least 1 uppercase letter, 1 number, and 1 symbol.");
             alert.getDialogPane().setStyle("-fx-font-size: 20px;");
             alert.showAndWait();
+        } else if (isDuplicateUser(firstName, lastName)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("User cannot be created, duplicate name found. Please create the user manually.");
+            alert.getDialogPane().setStyle("-fx-font-size: 20px;");
+            alert.showAndWait();
         } else {
             // Hide the current view
             writeCSV();
@@ -74,6 +84,24 @@ public class CSV_Writer {
         }
         Files.write(filePath, lines);
     }
+
+    public boolean isDuplicateUser(String firstName, String lastName) throws IOException {
+        String jsonContent = new String(Files.readAllBytes(Paths.get("./classes/users.json")));
+        JSONObject jsonObject = new JSONObject(jsonContent);
+        JSONArray jsonArray = jsonObject.getJSONArray("UserNames");
+
+        String fullName = firstName + " " + lastName;
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            if (jsonArray.getString(i).equals(fullName)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
 
     public void callScript() throws IOException {
         String[] command = {"cmd.exe", "/k", "start", "cmd.exe", "/k", "powershell.exe", "-ExecutionPolicy", "Bypass", "-Command", ". './classes/script.ps1'; onboardUser"};
