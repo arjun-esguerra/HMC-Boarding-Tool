@@ -19,13 +19,15 @@ This is a GUI tool developed to quicken the process of onboarding and offboardin
 * Download .zip folder and extract contents to the Program Files folder in the C drive. Final file path should be: <br/> C:\Program Files\hmcboarding</br>
 * Create a shortcut of the hmcboarding.exe and place it anywhere you would like to run it. Alternatively, run it directly from the folder.
 
-### Instructions
+## Instructions
 
+### Running the application
 1. Run hmcboarding.exe as administrator.</br>
 2. Sign in using your O365 Admin account. This will provide access to Microsoft's Exchange Online SDK, Teams SDK, and Graph SDK.
-<br/>![image](https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/9a452bc5-054f-47f1-8ade-3718c185cf76)<br/>
-3. After authentication, you will be greeted with the HMC Boarding Tool homescreen. You can select to either onboard or offboard a user.
+<br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/9a452bc5-054f-47f1-8ade-3718c185cf76" height="250" width="350">
+4. After authentication, you will be greeted with the HMC Boarding Tool homescreen. You can select to either onboard or offboard a user.
 <br/>![image](https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/c9389067-adbb-48c5-841c-84f77939e97f)<br/>
+### Onboarding a user
 1. Fill out all fields, then click Onboard User to start the Active Directory user creation, and license/phone number assignment.
 <br/>![image](https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/ba6e9059-c1a4-4eb2-bd23-6421abd5ad22)
 2. An elevated powershell terminal will open, showing the newly created user's details, which are to be added to HR's new hire checklist.
