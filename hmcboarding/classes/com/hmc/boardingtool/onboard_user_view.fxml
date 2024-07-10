@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="656.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hmc.boardingtool.Onboard_Controller">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="656.0" prefWidth="470.0" VBox.vgrow="ALWAYS">
+      <children>
+            <ImageView fitHeight="44.0" fitWidth="46.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../back_button.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="backButton" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" opacity="0.0" prefHeight="43.0" prefWidth="43.0" />
+          <ImageView fitHeight="130.0" fitWidth="288.0" layoutX="91.0" layoutY="58.0">
+               <image>
+                  <Image url="@../../../hmc_logo.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="71.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" wrappingWidth="126.677734375">
+               <font>
+                  <Font size="16.0" />
+               </font></Text>
+            <TextField fx:id="firstNameField" layoutX="183.0" layoutY="240.0" prefHeight="16.0" prefWidth="216.0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <Text layoutX="71.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:">
+               <font>
+                  <Font size="16.0" />
+               </font></Text>
+            <TextField fx:id="lastNameField" layoutX="184.0" layoutY="290.0" prefHeight="16.0" prefWidth="216.0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <Text layoutX="71.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+               <font>
+                  <Font size="16.0" />
+               </font></Text>
+            <TextField fx:id="passwordField" layoutX="184.0" layoutY="340.0" prefHeight="16.0" prefWidth="216.0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <Text layoutX="71.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:">
+               <font>
+                  <Font size="16.0" />
+               </font></Text>
+            <TextField fx:id="titleField" layoutX="184.0" layoutY="390.0" prefHeight="16.0" prefWidth="216.0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <Text layoutX="71.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Office:">
+               <font>
+                  <Font size="16.0" />
+               </font></Text>
+            <ComboBox fx:id="officeComboBox" layoutX="184.0" layoutY="440.0" prefHeight="32.0" prefWidth="216.0" style="-fx-font: 15px &quot;System&quot;;" />
+            <Text layoutX="71.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number:">
+               <font>
+                  <Font size="16.0" />
+               </font></Text>
+            <ComboBox fx:id="numberComboBox" layoutX="183.0" layoutY="490.0" prefHeight="32.0" prefWidth="216.0" style="-fx-font: 15px &quot;System&quot;;" />
+            <Button fx:id="submitButton" layoutX="70.0" layoutY="554.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="329.0" text="Onboard User">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

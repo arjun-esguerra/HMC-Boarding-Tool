@@ -1,0 +1,5 @@
+Copy this "hmcboarding" folder to the following directory: C:\Program Files
+
+Create a shortcut of the "hmcboarding" .exe file, then place it on your desktop.
+
+Make sure to run the app as administrator.
