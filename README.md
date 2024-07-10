@@ -1,17 +1,13 @@
 # HMC Boarding Tool
 
-GUI application developed to quicken the process of onboarding and offboarding a user's O365 & Active Directory account at HMC Architects.
-
-## Description
-
-Java and PowerShell application for efficient user onboarding and offboarding at HMC Architects. Automates AD user creation, group policy assignment, shared drive access, Microsoft 365 license management, and Teams phone number configuration. Utilizes Microsoft Exchange Online, Microsoft Teams, and Microsoft Graph SDKs.
+Java and PowerShell GUI application for efficient user onboarding and offboarding at HMC Architects. Automates AD user creation, group policy assignment, shared drive access, Microsoft 365 license management, and Teams phone number configuration. Utilizes Microsoft Exchange Online, Microsoft Teams, and Microsoft Graph SDKs.
 
 ## Getting Started
 
 ### Dependencies
-
 * Java JDK 22 (included in package)
 * Access to Microsoft Graph SDK (configured in Azure Admin Center)
+* Access to Microsoft Exchange Online, Microsoft Teams (Local Admin Rights)
 * Tested on Windows 11 (Version 10.0.22631 Build 22631)
 
 ### Installing
