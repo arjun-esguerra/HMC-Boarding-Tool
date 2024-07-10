@@ -12,7 +12,7 @@ Java and PowerShell GUI application for efficient user onboarding and offboardin
 
 ### Installing
 
-* Download .zip folder and extract contents to the Program Files folder in the C drive. Final file path should be: <br/> C:\Program Files\hmcboarding</br>
+* Download .zip folder and extract the "hmcboarding" folder to the Program Files directory in the C drive. Final file path should be: <br/> C:\Program Files\hmcboarding</br>
 * Create a shortcut of the hmcboarding.exe and place it anywhere you would like to run it. Alternatively, run it directly from the folder.
 
 ## Instructions
