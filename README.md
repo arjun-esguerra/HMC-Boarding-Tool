@@ -26,18 +26,18 @@ This is a GUI tool developed to quicken the process of onboarding and offboardin
 2. Sign in using your O365 Admin account. This will provide access to Microsoft's Exchange Online SDK, Teams SDK, and Graph SDK.
 <br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/9a452bc5-054f-47f1-8ade-3718c185cf76" height="250" width="350">
 4. After authentication, you will be greeted with the HMC Boarding Tool homescreen. You can select to either onboard or offboard a user.
-<br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/c9389067-adbb-48c5-841c-84f77939e97f" height=400 width=275><br/>
+<br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/c9389067-adbb-48c5-841c-84f77939e97f" height="328" width="278">
 ### Onboarding a user
 1. Fill out all fields, then click Onboard User to start the Active Directory user creation, and license/phone number assignment.
-<br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/ba6e9059-c1a4-4eb2-bd23-6421abd5ad22" height=400 width=275><br/>
+<br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/ba6e9059-c1a4-4eb2-bd23-6421abd5ad22" height="328" width="278">
 2. An elevated powershell terminal will open, showing the newly created user's details, which are to be added to HR's new hire checklist.
 <br/><A continuous script will run, until it has been detected that O365 has synced and assigned the user Microsoft license and a phone number.
 <br/>![image](https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/d6ec3df0-d77a-4857-9b65-798f86bf5992)<br/>
 ### Offboarding a user
 1. To offboard a user, select a user from the list, or search for the user using the search bar. (Names blurred for privacy)
-<br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/af99b180-7721-45e9-9f6d-75c213a7a9eb" height=400 width=275><br/>
+<br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/af99b180-7721-45e9-9f6d-75c213a7a9eb" height="328" width="278">
 2. Select the user's name, then click on "Offboard User" to initialize the group policy, license, and phone number removal.
-<br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/2818c724-8f0a-42bd-ab3d-70d53674759d" height=400 width=275><br/>
+<br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/2818c724-8f0a-42bd-ab3d-70d53674759d" height="328" width="278">
 
 ## Author
 
