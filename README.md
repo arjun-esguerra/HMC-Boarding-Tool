@@ -34,12 +34,10 @@ This is a GUI tool developed to quicken the process of onboarding and offboardin
 <br/><A continuous script will run, until it has been detected that O365 has synced and assigned the user Microsoft license and a phone number.
 <br/>![image](https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/d6ec3df0-d77a-4857-9b65-798f86bf5992)<br/>
 ### Offboarding a user
-
-
-
-
-
-
+1. To offboard a user, select a user from the list, or search for the user using the search bar. (Names blurred for privacy)
+<br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/af99b180-7721-45e9-9f6d-75c213a7a9eb" height=400 width=300><br/>
+2. Select the user's name, then click on "Offboard User" to initialize the group policy, license, and phone number removal.
+<br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/2818c724-8f0a-42bd-ab3d-70d53674759d" height=400 width=300><br/>
 
 ## Author
 
