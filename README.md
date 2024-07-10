@@ -1,24 +1,25 @@
 # HMC Boarding Tool
 
-This tool is used quicken the process of onboarding and offboarding a user's O365 & Active Directory account at HMC Architects.
+This is a GUI tool developed to quicken the process of onboarding and offboarding a user's O365 & Active Directory account at HMC Architects.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+
 
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* Java JDK 22 (included in package)
+* Access to Microsoft Graph SDK (configured in Azure Admin Center)
+* Tested on Windows 11 (Version 10.0.22631 Build 22631)
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* Download .zip folder and extract contents to the Program Files folder in the C drive. Final file path should be: C:\Program Files\hmcboarding
+* Create a shortcut of the hmcboarding.exe and place it anywhere you would like to run it. Alternatively, run it directly from the folder.
 
-### Executing program
+### Instructions
 
 * How to run the program
 * Step-by-step bullets
