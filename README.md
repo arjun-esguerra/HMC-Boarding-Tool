@@ -1,4 +1,5 @@
-# HMC Boarding Tool
+# HMC Boarding Tool <img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/1fad981b-2633-418e-ab35-ba8581fab116" height="40" width="40"> <img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/3e05f810-7608-447a-8460-4fb66aa862b8" height="40" width="40">
+
 
 Java and PowerShell GUI application for efficient user onboarding and offboarding at HMC Architects. Automates AD user creation, group policy assignment, shared drive access, Microsoft 365 license management, and Teams phone number configuration. Utilizes Microsoft Exchange Online, Microsoft Teams, and Microsoft Graph SDKs.
 
@@ -27,7 +28,7 @@ Java and PowerShell GUI application for efficient user onboarding and offboardin
 1. Fill out all fields, then click Onboard User to start the Active Directory user creation, and license/phone number assignment.
 <br/><br/><img src="https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/ba6e9059-c1a4-4eb2-bd23-6421abd5ad22" height="328" width="278">
 2. An elevated powershell terminal will open, showing the newly created user's details, which are to be added to HR's new hire checklist.
-<br/><A continuous script will run, until it has been detected that O365 has synced (takes 5-15 minutes) and upon completion, will assign the user Microsoft license and a phone number.
+<br/>A continuous script will run, until it has been detected that O365 has synced (takes 5-15 minutes) and upon completion, will assign the user Microsoft license and a phone number.
 <br/>![image](https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/d6ec3df0-d77a-4857-9b65-798f86bf5992)<br/>
 ### Offboarding a user
 1. To offboard a user, select a user from the list, or search for the user using the search bar. (Names blurred for privacy)
