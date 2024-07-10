@@ -16,35 +16,22 @@ This is a GUI tool developed to quicken the process of onboarding and offboardin
 
 ### Installing
 
-* Download .zip folder and extract contents to the Program Files folder in the C drive. Final file path should be: C:\Program Files\hmcboarding
+* Download .zip folder and extract contents to the Program Files folder in the C drive. Final file path should be: <br/> C:\Program Files\hmcboarding</br>
 * Create a shortcut of the hmcboarding.exe and place it anywhere you would like to run it. Alternatively, run it directly from the folder.
 
 ### Instructions
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+1. Run hmcboarding.exe as administrator.
+ ![image](https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/61ca7e48-2691-4062-add4-0e4844141380)
 
-## Help
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
 
-## Authors
+## Author
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+* Arjun Esguerra 
+* arjun.esguerra@hmcarchitects.com
 
 ## Version History
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
+* 1.0 Initial Release
+
