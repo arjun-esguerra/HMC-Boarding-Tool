@@ -21,8 +21,12 @@ This is a GUI tool developed to quicken the process of onboarding and offboardin
 
 ### Instructions
 
-1. Run hmcboarding.exe as administrator.
- ![image](https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/61ca7e48-2691-4062-add4-0e4844141380)
+1. Run hmcboarding.exe as administrator.</br>
+2. Sign in using your O365 Admin account. This will provide access to Microsoft's Exchange Online SDK, Teams SDK, and Graph SDK.
+<br/>![image](https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/9a452bc5-054f-47f1-8ade-3718c185cf76)<br/>
+4. After authentication, you will be greeted with the HMC Boarding Tool homescreen. You can select to either onboard or offboard a user.
+   <br/>![image](https://github.com/arjun-esguerra/HMC-Boarding-Tool/assets/169405197/c9389067-adbb-48c5-841c-84f77939e97f)<br/>
+
 
 
 
